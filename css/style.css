@@ -1,0 +1,198 @@
+/* 1. IMPORTACIÓN DE FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* 2. ESTILOS GLOBALES */
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f6f6f6;
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* background-attachment: fixed; */
+}
+
+/* 3. ESTRUCTURA GENERAL */
+.contenedor {
+    display: flex;
+    justify-content: center;
+}
+
+.lateral {
+    position: relative;
+    background-color: #009ba8;
+    border-radius: 13px;
+    color: #fff;
+    width: 550px;
+    height: auto;
+}
+
+.formulario {
+    margin-left: 150px;
+    background-color: #fff;
+    padding: 20px 30px 30px;
+    border: 1px solid rgba(128, 128, 128, 0.374);
+    width: 300px;
+    border-radius: 20px;
+    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); */
+}
+
+/* 4. CABECERA DEL FORMULARIO */
+.header {
+    color: #000000;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.info-header {
+    color: #009ba8;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+#lna {
+    width: auto;
+    height: 100px;
+    margin: 2em 0 0 2.2em;
+}
+
+/* 5. ELEMENTOS DEL FORMULARIO */
+.input-grp {
+    padding-top: 14px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.374);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus {
+    border-color: #009ba8;
+    box-shadow: 0 0 8px rgba(92, 199, 205, 0.5);
+    background-color: #f0f0f0;
+}
+
+input::placeholder {
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+input:hover {
+    border-color: #009ba8;
+    background-color: #f9f9f9;
+}
+
+label {
+    font-size: 14px;
+}
+
+/* 6. BOTONES */
+.btn {
+    margin-top: 10px;
+}
+
+#btn_confirmar {
+    border-radius: 3px;
+    background-color: #009ba8;
+    color: #fff;
+    border: none;
+    height: 43px;
+    width: 100%;
+}
+
+#btn_confirmar:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+#btn_salir {
+    margin-left: 20px;
+    background-color: #fff;
+    border: none;
+    text-decoration: underline;
+    width: 85%;
+}
+
+#btn_salir:hover {
+    color: #ff445a;
+    cursor: pointer;
+}
+
+#btn_confirmar>i {
+    padding-left: 10px;
+}
+
+/* 7. CONTENIDO LATERAL */
+.texto-lateral {
+    margin-left: 2.2em;
+}
+
+.contenedor-lateral {
+    margin-top: 3em;
+    width: auto;
+    height: 42em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contenedor-mapa {
+    margin-top: 8em;
+}
+
+.contenedor-nadador {
+    margin-left: 2em;
+}
+
+/* 8. IMÁGENES */
+.google-maps,
+.swimmer {
+    border-radius: 9px;
+    width: auto;
+    height: 280px;
+    animation: moveSideToSide 3s infinite ease-in-out;
+}
+
+.swimmer {
+    margin-top: 10px;
+    width: 480px;
+    height: auto;
+}
+
+/* 9. ICONOS */
+#icono {
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+/* 10. ANIMACIONES */
+.mov,
+#mov {
+    animation: moveSideToSide 3s infinite ease-in-out;
+}
+
+@keyframes moveSideToSide {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+/* 11. OTROS */
+.certificados {
+    font-weight: 500;
+}
