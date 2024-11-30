@@ -1,0 +1,265 @@
+if(isset($_GET['a']) && substr($_GET['a'],0,4) == 'new_')
+{
+sc_exec_sql("UPDATE sec_musuariousers SET active = 'Y', activation_code ='' WHERE activation_code = ".
+sc_sql_injection($_GET['a']) );
+sc_redir('app_Login');
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<style>
+    /* 1. IMPORTACIÓN DE FUENTES */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    /* 2. ESTILOS GLOBALES */
+    * {
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        background-color: #f6f6f6;
+        /* background-size: cover; */
+        /* background-repeat: no-repeat; */
+        /* background-position: center; */
+        /* background-attachment: fixed; */
+    }
+
+    /* Estilo común para los elementos con esos ids */
+    #id_sc_field_nro_doc,
+    #id_sc_field_pri_nombre,
+    #id_sc_field_seg_nombre,
+    #id_sc_field_pri_apellido,
+    #id_sc_field_seg_apellido,
+    #id_sc_field_sexo,
+    #id_sc_field_fecha_nacimiento,
+    #id_sc_field_celular,
+    #id_sc_field_email,
+    #id_sc_field_login {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        border: 1px solid rgba(128, 128, 128, 0.374);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+
+    /* Estilo cuando el campo está en foco */
+    #id_sc_field_nro_doc:focus,
+    #id_sc_field_pri_nombre:focus,
+    #id_sc_field_seg_nombre:focus,
+    #id_sc_field_pri_apellido:focus,
+    #id_sc_field_seg_apellido:focus,
+    #id_sc_field_sexo:focus,
+    #id_sc_field_fecha_nacimiento:focus,
+    #id_sc_field_celular:focus,
+    #id_sc_field_email:focus,
+    #id_sc_field_login:focus,
+    #id_sc_field_pswd:focus,
+    #id_sc_field_confirm_pswd:focus {
+        border-color: #009ba8;
+        box-shadow: 0 0 8px rgba(92, 199, 205, 0.5);
+        background-color: #f0f0f0;
+    }
+
+    /* Estilo para el texto en los placeholders */
+    #id_sc_field_nro_doc::placeholder,
+    #id_sc_field_pri_nombre::placeholder,
+    #id_sc_field_seg_nombre::placeholder,
+    #id_sc_field_pri_apellido::placeholder,
+    #id_sc_field_seg_apellido::placeholder,
+    #id_sc_field_sexo::placeholder,
+    #id_sc_field_fecha_nacimiento::placeholder,
+    #id_sc_field_celular::placeholder,
+    #id_sc_field_email::placeholder,
+    #id_sc_field_login::placeholder,
+    #id_sc_field_pswd::placeholder,
+    #id_sc_field_confirm_pswd::placeholder {
+        color: #aaa;
+        transition: color 0.3s ease;
+    }
+
+    /* Estilo al pasar el ratón (hover) */
+    #id_sc_field_nro_doc:hover,
+    #id_sc_field_pri_nombre:hover,
+    #id_sc_field_seg_nombre:hover,
+    #id_sc_field_pri_apellido:hover,
+    #id_sc_field_seg_apellido:hover,
+    #id_sc_field_sexo:hover,
+    #id_sc_field_fecha_nacimiento:hover,
+    #id_sc_field_celular:hover,
+    #id_sc_field_email:hover,
+    #id_sc_field_login:hover,
+    #id_sc_field_pswd:hover,
+    #id_sc_field_confirm_pswd:hover {
+        border-color: #009ba8;
+        background-color: #f9f9f9;
+    }
+
+
+    #id_sc_field_pswd,
+    #id_sc_field_confirm_pswd {
+        background-color: #fff;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        border: 1px solid rgba(128, 128, 128, 0.374);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    /*Bloqueando los estilos del div que contiene los inputs de contrasena y confirmar contrasena para 		manejar el 		diseno planeado del formulario*/
+    #id_read_off_pswd>div,
+    #id_read_off_confirm_pswd>div {
+        background: none;
+        border: none;
+    }
+
+    /*ESTILOS DE BOTONES AGREGAR Y SALIR---------------------*/
+
+    /* 	BOTON DE AGREGAR */
+    #sc_b_ins_b {
+        /*padding-left: 10px; */
+        width: 75%;
+        border-radius: 4px;
+        background-color: #009ba8;
+        color: #fff;
+        border: none;
+    }
+
+    #sc_b_ins_b:hover {
+        background-color: black;
+        cursor: pointer;
+    }
+
+    /* 	BOTON DE SALIR */
+    #sc_b_sai_b {
+        background-color: #fff;
+        border: 1px solid rgba(46, 46, 46, 0.374);
+        width: 75%;
+        color: rgba(46, 46, 46, 0.374);
+        border-radius: 4px;
+    }
+
+    #sc_b_sai_b:hover {
+        color: #ff2c45;
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid #ff2c45;
+    }
+
+    /*esto sirve como un tipo de background para detras del formulario*/
+    /* 	body > form:nth-child(20){
+		background-color: seagreen;
+	}
+	 */
+
+    /*QUITAR ELBACKGROUND DE LOS BOTONES Y ANNADIENDO UN BORDER A LA TABLA*/
+
+    .scFormToolbar {
+        background: none;
+    }
+
+    /* 	DIV FORMULARIO CON BORDES QUE SE MUESTRAN */
+
+    #main_table_form>tbody>tr>td>div {
+        border-radius: 8px;
+        border: 1px solid rgba(128, 128, 128, 0.374);
+        background: none;
+        background-color: none;
+    }
+
+    /*QUITAR MOLESTO COLOR DE FONDO PARA EL DISENNO
+	
+	este selector divide las celdas xd :: #hidden_bloco_0
+	
+	el color que estoy cazando es #EAEBF4
+	
+	*/
+
+    .scFormDataOdd {
+        background: none;
+        background-color: #fff;
+    }
+
+    .scFormLabelOdd {
+        background-color: none;
+        background: none;
+    }
+
+
+    #hidden_field_label_nro_doc {
+        display: block;
+        width: 100%;
+        /* Opcional, para que tome todo el ancho */
+    }
+
+    #hidden_field_label_nro_do {
+        display: flex;
+        flex-direction: column;
+    }
+
+    td:not(#main_table_form > tbody > tr > td > div > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > table > tbody > tr > td:nth-child(1)):not(#main_table_form > tbody > tr > td > div > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > table > tbody > tr > td:nth-child(2)):not(#main_table_form > tbody > tr > td > div > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > table > tbody > tr > td:nth-child(3) #idAjaxRadio_sexo > table > tbody > tr > td:nth-child(2)):not(#ui-datepicker-div td):not(#idAjaxRadio_sexo > table > tbody > tr > td:nth-child(1)):not(#idAjaxRadio_sexo > table > tbody > tr > td:nth-child(2)) {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #idAjaxRadio_sexo>table>tbody>tr:nth-child(1)>td>label {
+        padding-bottom: 7px;
+
+    }
+
+    #main_table_form>tbody>tr>td>div>table>tbody>tr:nth-child(2)>td>table>tbody>tr>td>table>tbody>tr>td:nth-child(1) {
+        display: none;
+    }
+
+
+    /* 	PARA OCULTAR UN ENLANCE QUE REDIRIGE A OTRA VERSION WEB DEL FORMULARIO */
+    #sc-id-mobile-out {
+        display: none;
+    }
+
+    #sc_b_ins_b {
+        margin-left: 33%;
+    }
+
+    #hidden_field_label_nro_doc,
+    #hidden_field_label_pri_nombre,
+    #hidden_field_label_seg_nombre,
+    #hidden_field_label_pri_apellido,
+    #hidden_field_label_seg_apellido,
+    #hidden_field_label_sexo,
+    #hidden_field_label_fecha_nacimiento,
+    #hidden_field_label_celular,
+    #hidden_field_label_email,
+    #hidden_field_label_login,
+    #hidden_field_label_pswd,
+    #hidden_field_label_confirm_pswd,
+    #hidden_field_label_name {
+        padding-bottom: 0;
+    }
+
+    body>form:nth-child(23) {
+        padding-left: 17.8%;
+    }
+</style>
+
+
+<body>
+
+</body>
+
+</html>
+
+<?php

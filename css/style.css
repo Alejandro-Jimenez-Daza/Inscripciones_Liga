@@ -102,6 +102,7 @@ label {
 }
 
 #btn_confirmar {
+    padding-left: 10px;
     border-radius: 3px;
     background-color: #009ba8;
     color: #fff;
@@ -128,10 +129,6 @@ label {
     cursor: pointer;
 }
 
-#btn_confirmar>i {
-    padding-left: 10px;
-}
-
 /* 7. CONTENIDO LATERAL */
 .texto-lateral {
     margin-left: 2.2em;
@@ -146,6 +143,7 @@ label {
     align-items: center;
     flex-direction: column;
 }
+
 
 .contenedor-mapa {
     margin-top: 8em;
@@ -196,3 +194,17 @@ label {
 .certificados {
     font-weight: 500;
 }
+
+
+/* 
+<!-- 1. Discipline (train consistently).
+2. Coaches usually stall your progress by having you switch programs.
+3. Focus on the basics to learn skills faster in the future.
+4. Take knowledge seriously.
+5. NEVER train when body is off in a big way - always rest more to avoid injury. -->
+
+<!-- 1. Disciplina (entrenar consistentemente).
+2. Los entrenadores suelen detener tu progreso haciéndote cambiar de programa.
+3. Concéntrese en lo básico para aprender habilidades más rápido en el futuro.
+4. Tómate el conocimiento en serio.
+5. NUNCA entrene cuando el cuerpo esté muy apagado; siempre descanse más para evitar lesiones. --> */

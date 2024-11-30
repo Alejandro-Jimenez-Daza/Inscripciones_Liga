@@ -1,0 +1,208 @@
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    /* 2. ESTILOS GLOBALES */
+    * {
+        font-family: "Poppins", sans-serif;
+    }
+
+    #main_table_form {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #main_table_form+div {
+        display: inline-block;
+        width: 37rem;
+        height: 81.88rem;
+        vertical-align: top;
+        background: linear-gradient(135deg, #009ba8, #007f8c);
+        border-radius: 13px;
+        color: #fff;
+    }
+
+
+    body>form:nth-child(23)>div:nth-child(18)>img {
+        width: auto;
+        height: 100px;
+        margin: 2em 0 0 2.2em;
+    }
+
+    .texto-lateral {
+        padding-top: 20px;
+        font-size: 14px;
+    }
+
+    body>form:nth-child(23)>div:nth-child(18)>div.texto-lateral {
+        padding-left: 31px;
+    }
+
+
+    body>form:nth-child(23)>div:nth-child(18)>div.contenedor-lateral>div.contenedor-mapa>h1 {
+        font-weight: 700;
+        font-size: 34px;
+    }
+
+    #icono {
+        font-size: 27px;
+        margin-left: 10px;
+    }
+
+
+    body>form:nth-child(23)>div:nth-child(18)>div.contenedor-lateral>div.contenedor-mapa>a>img {
+        border-radius: 9px;
+        width: auto;
+        height: 280px;
+    }
+
+    body>form:nth-child(23)>div:nth-child(18)>div.contenedor-lateral>div.contenedor-nadador>img {
+        margin-top: 10px;
+        width: 480px;
+        height: auto;
+        border-radius: 9px;
+    }
+
+    body>form:nth-child(23)>div:nth-child(18)>div.contenedor-lateral {
+        padding-left: 30px;
+    }
+
+    body>form:nth-child(23)>div:nth-child(18)>div.contenedor-lateral>div.contenedor-mapa>p {
+        padding-bottom: 15px;
+        font-size: 13px;
+    }
+
+    body>form:nth-child(23)>div:nth-child(18)>div.contenedor-lateral>div.contenedor-nadador {
+        padding-top: 50px;
+    }
+
+    #mov {
+        font-weight: 700;
+    }
+</style>
+
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.querySelector("#id_sc_field_nro_doc").placeholder = "Ej: 1234567890";
+            document.querySelector("#id_sc_field_pri_nombre").placeholder = "Del documento";
+            document.querySelector("#id_sc_field_seg_nombre").placeholder = "Opcional";
+            document.querySelector("#id_sc_field_pri_apellido").placeholder = "Del documento";
+            document.querySelector("#id_sc_field_seg_apellido").placeholder = "Opcional";
+            document.querySelector("#id_sc_field_fecha_nacimiento").placeholder = "DD/MM/AAAA";
+            document.querySelector("#id_sc_field_celular").placeholder = "000-000-00-00";
+            document.querySelector("#id_sc_field_email").placeholder = "Tuemail@dominio.com";
+            document.querySelector("#id_sc_field_login").placeholder = "Nombre de usuario";
+            document.querySelector("#id_sc_field_pswd").placeholder = "Contraseña segura";
+            document.querySelector("#id_sc_field_confirm_pswd").placeholder = "Contraseña segura";
+
+            document.querySelector("#id_read_off_fecha_nacimiento > span.scFormDataHelpOdd").remove();
+
+            // Seleccionamos el contenedor del formulario que contiene la tabla
+            const mainTableForm = document.querySelector("#main_table_form");
+
+            // Creamos el nuevo div principal
+            const newDiv = document.createElement("div");
+
+            // Creamos la imagen
+            const image = document.createElement("img");
+            image.src = "https://nadamejor.com.co/assets/img/logo/logo_liga_natacion.png"; // Reemplaza esta URL con la ruta de tu imagen
+            image.alt = "Imagen reemplazando el texto"; // Texto alternativo para la imagen
+
+            // Añadimos la imagen al div principal
+            newDiv.appendChild(image);
+
+            // Añadimos un salto de línea después de la imagen
+            newDiv.appendChild(document.createElement("br"));
+
+            // Creamos el div con el párrafo del contacto
+            const contactDiv = document.createElement("div");
+            contactDiv.classList.add("texto-lateral");
+
+            const newP = document.createElement("p");
+            newP.classList.add("contacto");
+            newP.innerHTML = "Contáctanos al (604) 3221303 <br> o escribe al +57 300 7565043"; // Texto con salto de línea dentro del párrafo
+
+            // Añadimos el párrafo al div del contacto
+            contactDiv.appendChild(newP);
+
+            // Insertamos el div con la imagen y el salto de línea como hermano después de la tabla
+            mainTableForm.parentElement.insertBefore(newDiv, mainTableForm.nextSibling);
+
+            // Insertamos el div con el párrafo debajo de la imagen
+            newDiv.insertAdjacentElement("beforeend", contactDiv);
+
+            // **Añadimos el nuevo contenido debajo del párrafo, pero dentro del div azul**
+            // Seleccionamos el contenedor azul
+            const blueDiv = document.querySelector("body > form:nth-child(23) > div:nth-child(18)");
+
+            // Creamos el nuevo div contenedor-lateral
+            const lateralDiv = document.createElement("div");
+            lateralDiv.classList.add("contenedor-lateral");
+
+            // Contenido dentro de contenedor-lateral
+            const contenedorMapa = document.createElement("div");
+            contenedorMapa.classList.add("contenedor-mapa");
+
+            const mapaHeading = document.createElement("h1");
+            mapaHeading.innerHTML = 'UBÍCANOS<i class="fa-solid fa-location-dot" id="icono"></i>';
+            contenedorMapa.appendChild(mapaHeading);
+
+            const mapaParagraph = document.createElement("p");
+            mapaParagraph.classList.add("mov");
+            mapaParagraph.textContent = "Cra. 72 #48-100, Laureles - Estadio, Medellín";
+            contenedorMapa.appendChild(mapaParagraph);
+
+            const mapaLink = document.createElement("a");
+            mapaLink.target = "_blank";
+            mapaLink.href =
+                "https://www.google.com/maps?sca_esv=a602e8e6c3755c23&output=search&q=liga+de+natacion+de+antioquia&source=lnms&fbs=AEQNm0CbCVgAZ5mWEJDg6aoPVcBgWizR0-0aFOH11Sb5tlNhdzvguW7TJ8ZJj4v-NOGupFj-oo0X57oBKX3JJxYDU8Ov9BJS9mt91WddMiwk3lKAXL1G8HGTHy8ifOESqSs6wBN_xTpOyCQynQayDg6EE1opCrUDvV-v5sIGF4YpqjOuv8ate2vHhu-fJs-HOe01yDqR7p-m9C19BvZHPo-GQPiWV-5rEg&entry=mc&ved=1t:200715&ictx=111";
+
+            const mapaImg = document.createElement("img");
+            mapaImg.src = "https://i.ibb.co/98PzWpR/1.png";
+            mapaImg.alt = "Ubicacion liga de natacion google maps";
+            mapaImg.classList.add("google-maps");
+            mapaLink.appendChild(mapaImg);
+
+            contenedorMapa.appendChild(mapaLink);
+            lateralDiv.appendChild(contenedorMapa);
+
+            // Añadimos el contenedor de nadador
+            const contenedorNadador = document.createElement("div");
+            contenedorNadador.classList.add("contenedor-nadador");
+
+            const nadadorHeading = document.createElement("h2");
+            nadadorHeading.classList.add("certificados");
+            nadadorHeading.id = "mov";
+            nadadorHeading.textContent = "Aprende con los mejores instructores certificados.";
+            contenedorNadador.appendChild(nadadorHeading);
+
+            const nadadorImg = document.createElement("img");
+            nadadorImg.src = "https://i.ibb.co/rvBbYZr/2.jpg";
+            nadadorImg.alt = "Ubicacion liga de natacion google maps";
+            nadadorImg.classList.add("swimmer");
+            contenedorNadador.appendChild(nadadorImg);
+
+            lateralDiv.appendChild(contenedorNadador);
+
+            // Agregamos contenedor-lateral dentro del div azul
+            blueDiv.appendChild(lateralDiv);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+<?php
